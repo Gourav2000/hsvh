@@ -453,7 +453,6 @@ class _HomePageState extends State<HomePage> {
                           width: double.infinity,
                           decoration: BoxDecoration(
                             color: Colors.white,
-
                             boxShadow: <BoxShadow>[
                               BoxShadow(
                                 color: Colors.grey.shade200,
@@ -462,72 +461,76 @@ class _HomePageState extends State<HomePage> {
                             ],
                             //borderRadius: BorderRadius.all(Radius.circular(15))
                           ),
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                  left: 0.1,
-                                  child: Image.asset(
-                                    "assets/red.png",
-                                    width: width * 0.3,
-                                    height: height * 0.1,
-                                    fit: BoxFit.fill,
-                                  )),
-                              Positioned(
-                                  left: width * 0.1,
-                                  top: height * 0.016,
+                          child: Container(
+                            height: height * 0.2,
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                    left: 0.1,
+                                    child: Image.asset(
+                                      "assets/red.png",
+                                      width: width * 0.3,
+                                      height: height * 0.1,
+                                      fit: BoxFit.fill,
+                                    )),
+                                Positioned(
+                                    left: width * 0.1,
+                                    top: height * 0.016,
+                                    child: Column(
+                                      children: [
+                                        Image.asset("assets/iconcastle.png"),
+                                        Text(
+                                          "HAMBURG",
+                                          style: TextStyle(
+                                              fontSize: 11,
+                                              fontWeight: FontWeight.w600),
+                                        )
+                                      ],
+                                    )),
+                                Positioned(
+                                    right: 0.1,
+                                    child: Image.asset(
+                                      "assets/blue.png",
+                                      width: width * 0.3,
+                                      height: height * 0.097,
+                                      fit: BoxFit.fill,
+                                    )),
+                                Positioned(
+                                    right: width * 0.1,
+                                    top: height * 0.016,
+                                    child: Column(
+                                      children: [
+                                        Image.asset("assets/team2.png"),
+                                        Text(
+                                          "MAGDEBURG",
+                                          style: TextStyle(
+                                              fontSize: 11,
+                                              fontWeight: FontWeight.w600),
+                                        )
+                                      ],
+                                    )),
+                                Container(
+                                  width: double.infinity,
+                                  alignment: Alignment.center,
+                                  padding: EdgeInsets.symmetric(vertical: 20),
                                   child: Column(
                                     children: [
-                                      Image.asset("assets/iconcastle.png"),
                                       Text(
-                                        "HAMBURG",
+                                        "7H : 48M Left",
                                         style: TextStyle(
-                                            fontSize: 11,
+                                            fontSize: 12,
                                             fontWeight: FontWeight.w600),
-                                      )
+                                      ),
+                                      SizedBox(height: height * 0.027),
+                                      InkWell(
+                                          onTap: () {},
+                                          child: Image.asset(
+                                              "assets/checkOut.png"))
                                     ],
-                                  )),
-                              Positioned(
-                                  right: 0.1,
-                                  child: Image.asset(
-                                    "assets/blue.png",
-                                    width: width * 0.3,
-                                    height: height * 0.097,
-                                    fit: BoxFit.fill,
-                                  )),
-                              Positioned(
-                                  right: width * 0.1,
-                                  top: height * 0.016,
-                                  child: Column(
-                                    children: [
-                                      Image.asset("assets/team2.png"),
-                                      Text(
-                                        "MAGDEBURG",
-                                        style: TextStyle(
-                                            fontSize: 11,
-                                            fontWeight: FontWeight.w600),
-                                      )
-                                    ],
-                                  )),
-                              Container(
-                                alignment: Alignment.center,
-                                padding: EdgeInsets.symmetric(vertical: 20),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      "7H : 48M Left",
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                    SizedBox(height: height * 0.027),
-                                    InkWell(
-                                        onTap: () {},
-                                        child:
-                                            Image.asset("assets/checkOut.png"))
-                                  ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         );
                       }),

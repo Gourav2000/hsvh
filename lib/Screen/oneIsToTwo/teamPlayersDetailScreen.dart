@@ -41,10 +41,7 @@ class _TeamPlayersDetailScreenState extends State<TeamPlayersDetailScreen> {
           children: [
             Container(
               padding: EdgeInsets.only(left: 30),
-              height: MediaQuery.of(context).size.height * 0.44,
-              decoration: BoxDecoration(
-                color: Colors.grey.shade100,
-              ),
+              decoration: BoxDecoration(color: Colors.grey.shade100),
               width: double.infinity,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -250,6 +247,7 @@ class _TeamPlayersDetailScreenState extends State<TeamPlayersDetailScreen> {
               margin: EdgeInsets.symmetric(horizontal: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
+                // border: Border.all(),
                 color: Colors.white,
               ),
               child: Column(
@@ -270,11 +268,12 @@ class _TeamPlayersDetailScreenState extends State<TeamPlayersDetailScreen> {
             // chart
 
             Container(
-              height: MediaQuery.of(context).size.height * 0.3,
+              // height: MediaQuery.of(context).size.height * 0.3,
               width: double.infinity,
               margin: EdgeInsets.symmetric(horizontal: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
+                // border: Border.all(),
                 color: Colors.white,
               ),
               child: Column(
