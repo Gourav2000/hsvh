@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:hsvh/controllers/Business%20Network%20controller/BusinessNetworkController.dart';
+import 'package:provider/provider.dart';
 
 class BusinessNetworkProfile extends StatefulWidget {
   const BusinessNetworkProfile({Key? key}) : super(key: key);
@@ -97,47 +98,61 @@ class _BusinessNetworkProfileState extends State<BusinessNetworkProfile> {
                                             onTap: () {
                                               // change
                                               print("test1");
-                                              controller.changePro();
+                                              Provider.of<BusinessProvider>(
+                                                      context,
+                                                      listen: false)
+                                                  .changePros();
                                             },
-                                            child: Column(
-                                              children: [
-                                                ListTile(
-                                                  leading: CircleAvatar(
-                                                      backgroundImage: AssetImage(
-                                                          "assets/avatar.png"),
-                                                      radius: 22),
-                                                  title: Text(
-                                                    "Wilhe-lm Hartmann",
-                                                    style: TextStyle(
-                                                        fontSize: 18,
-                                                        fontWeight:
-                                                            FontWeight.w600),
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          20)),
+                                              child: Column(
+                                                children: [
+                                                  ListTile(
+                                                    leading: CircleAvatar(
+                                                        backgroundImage: AssetImage(
+                                                            "assets/avatar.png"),
+                                                        radius: 22),
+                                                    title: Text(
+                                                      "Wilhe-lm Hartmann",
+                                                      style: TextStyle(
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                    ),
+                                                    subtitle: Text(
+                                                      "Deutscher Handballbund",
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          fontSize: 14,
+                                                          color: Color(
+                                                              0xff4D4D4D)),
+                                                    ),
                                                   ),
-                                                  subtitle: Text(
-                                                    "Deutscher Handballbund",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        fontSize: 14,
-                                                        color:
-                                                            Color(0xff4D4D4D)),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets
-                                                          .symmetric(
-                                                      horizontal: 27),
-                                                  child: Divider(
-                                                    thickness: 1,
-                                                    color: Colors.grey.shade400,
-                                                  ),
-                                                )
-                                              ],
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                            .symmetric(
+                                                        horizontal: 27),
+                                                    child: Divider(
+                                                      thickness: 1,
+                                                      color:
+                                                          Colors.grey.shade400,
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
                                             ),
                                           );
                                         },
                                       ),
-                                      controller.check.value == true
+                                      Provider.of<BusinessProvider>(context,
+                                                      listen: true)
+                                                  .check ==
+                                              true
                                           ? Positioned(
                                               bottom: height * 0.008,
                                               child: ElevatedButton(
@@ -185,16 +200,14 @@ class _BusinessNetworkProfileState extends State<BusinessNetworkProfile> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  height: height * 0.48,
+                  height: 340,
                   width: double.infinity,
-                  decoration: BoxDecoration(border: Border.all()),
                   margin: EdgeInsets.symmetric(horizontal: width * 0.040),
                   child: Column(
                     children: [
                       Container(
-                        height: height * 0.21,
+                        height: 140,
                         width: double.infinity,
-                        decoration: BoxDecoration(border: Border.all()),
                         child: Column(
                           children: [
                             CircleAvatar(
@@ -218,8 +231,7 @@ class _BusinessNetworkProfileState extends State<BusinessNetworkProfile> {
                         ),
                       ),
                       Container(
-                        height: height * 0.252,
-                        decoration: BoxDecoration(border: Border.all()),
+                        height: 180,
                         padding: EdgeInsets.only(left: width * 0.03),
                         width: double.infinity,
                         child: Column(
@@ -235,9 +247,7 @@ class _BusinessNetworkProfileState extends State<BusinessNetworkProfile> {
                             Row(
                               children: [
                                 Container(
-                                  width: width * 0.17,
-                                  decoration:
-                                      BoxDecoration(border: Border.all()),
+                                  width: width * 0.08,
                                   child: Stack(
                                     //alignment: Alignment.topRight,
                                     children: [
@@ -310,8 +320,7 @@ class _BusinessNetworkProfileState extends State<BusinessNetworkProfile> {
                 ),
                 SizedBox(height: height * 0.009),
                 Container(
-                  height: height * 0.18,
-                  decoration: BoxDecoration(border: Border.all()),
+                  height: 130,
                   padding: EdgeInsets.symmetric(horizontal: width * 0.06),
                   margin: EdgeInsets.only(top: height * 0.012),
                   width: double.infinity,
@@ -364,7 +373,6 @@ class _BusinessNetworkProfileState extends State<BusinessNetworkProfile> {
                 SizedBox(height: height * 0.009),
                 Container(
                   // height: height * 0.3,
-                  decoration: BoxDecoration(border: Border.all()),
                   padding: EdgeInsets.symmetric(horizontal: width * 0.06),
                   margin: EdgeInsets.only(top: height * 0.012),
                   width: double.infinity,
@@ -415,7 +423,6 @@ Widget customRow(double width, String text1, String text2) {
 Widget members(String text1, String text2, double width, BuildContext context,
     double height, String image) {
   return Container(
-    decoration: BoxDecoration(border: Border.all()),
     child: Column(
       children: [
         CircleAvatar(

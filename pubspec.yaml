@@ -47,6 +47,7 @@ dependencies:
   contacts_service: ^0.6.1
   google_maps_flutter:
   dotted_line:
+  provider:
 
 dev_dependencies:
   flutter_test:

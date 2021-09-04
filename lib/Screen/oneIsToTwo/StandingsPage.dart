@@ -332,9 +332,7 @@ class _TeamStandingsState extends State<StandingsPage> {
                 backgroundColor: Color(0xff002B7A),
                 label: Text(
                   "See Detailed Rankings",
-                  style: TextStyle(
-                    fontSize: 14,
-                  ),
+                  style: TextStyle(fontSize: 14, color: Colors.white),
                 ),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15.0))),

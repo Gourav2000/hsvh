@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class BusinessNetworkController extends GetxController {
@@ -32,4 +33,23 @@ class BusinessNetworkController extends GetxController {
     }
     update();
   }
+}
+
+class BusinessProvider with ChangeNotifier {
+  bool check = false;
+
+  void changePros() {
+    if (check == true) {
+      check = false;
+      notifyListeners();
+      print("false");
+    } else {
+      check = true;
+      print("true");
+      notifyListeners();
+    }
+    notifyListeners();
+  }
+
+  //
 }

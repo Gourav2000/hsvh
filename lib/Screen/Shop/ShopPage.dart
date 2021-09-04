@@ -405,8 +405,8 @@ class _ShopPageState extends State<ShopPage> {
 
                                             //second button buynow
                                             Container(
-                                              height: 25,
-                                              width: 90,
+                                              height: height * 0.033,
+                                              width: width * 0.25,
                                               padding:
                                                   EdgeInsets.only(right: 10),
                                               child: ElevatedButton(

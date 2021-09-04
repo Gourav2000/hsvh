@@ -18,6 +18,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final HomePageController controller = Get.put(HomePageController());
   bool democheck = true;
+  bool latNews = true;
 
   @override
   void initState() {
@@ -74,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   SizedBox(
                     width: width,
-                    height: height * 0.270,
+                    height: height * 0.25,
                     child: ListView.builder(
                         itemCount: 4,
                         scrollDirection: Axis.horizontal,
@@ -278,9 +279,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        left: width * 0.025,
-                        top: height * 0.01,
-                        right: width * 0.025),
+                      left: width * 0.025,
+                      right: width * 0.025,
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -298,116 +299,102 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Container(
+                    height: latNews == true ? height * 0.36 : height * 0.42,
+                    width: width,
+                    // decoration: BoxDecoration(border: Border.all()),
                     padding: EdgeInsets.only(top: height * 0.01),
                     child: CarouselSlider.builder(
-                      itemCount: 5,
-                      options: CarouselOptions(
-                          height: height * 0.38,
-                          viewportFraction: 1,
-                          onPageChanged: (index, reason) {
-                            controller.updateSlideIndex2(index);
-                            return false;
-                          }),
-                      itemBuilder: (BuildContext context, int itemIndex,
-                              int pageViewIndex) =>
-                          Container(
-                        width: width,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          //borderRadius: BorderRadius.all(Radius.circular(15)),
-                          boxShadow: <BoxShadow>[
-                            BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 0.5,
-                            ),
-                          ],
-                        ),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                'assets/homepagefinal.png',
-                                height: height * 0.375 * 0.6,
-                                width: width,
-                                fit: BoxFit.cover,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    left: width * 0.025,
-                                    right: width * 0.025,
-                                    bottom: height * 0.005,
-                                    top: height * 0.0175),
-                                child: SizedBox(
+                        itemCount: 5,
+                        options: CarouselOptions(
+                            height: height * 0.38,
+                            viewportFraction: 1,
+                            onPageChanged: (index, reason) {
+                              controller.updateSlideIndex2(index);
+                              return false;
+                            }),
+                        itemBuilder: (BuildContext context, int itemIndex,
+                                int pageViewIndex) =>
+                            Container(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Image.asset(
+                                    'assets/homepagefinal.png',
+                                    height: height * 0.23,
                                     width: width,
-                                    height: height * 0.375 * 0.075,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 0.6),
                                     child: Text(
                                       'Jim Gottfridson is Bundesliga 2020/2021 MVP',
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 17),
-                                    )),
-                              ),
-                              Container(
-                                padding: EdgeInsets.only(
-                                    left: width * 0.025, right: width * 0.025),
-                                child: ReadMoreText(
-                                  'Flutter is Google’s mobile UI open source framework to build high-quality native (super fast) interfaces for iOS and Android apps with the unified codebase.',
-                                  trimLines: 2,
-                                  colorClickableText: Colors.pink,
-                                  style: TextStyle(
-                                      color: Colors.grey.shade600,
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 16),
-                                  trimMode: TrimMode.Line,
-                                  trimCollapsedText: 'Read more',
-                                  trimExpandedText: 'Read less',
-                                  moreStyle: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.grey.shade800,
+                                    ),
                                   ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    top: 10,
-                                    left: width * 0.025,
-                                    right: width * 0.025),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 10),
+                                    child: ReadMoreText(
+                                      'Flutter is Google’s mobile UI open source framework to build high-quality native (super fast) interfaces for iOS and Android apps with the unified codebase.',
+                                      trimLines: 2,
+                                      colorClickableText: Colors.pink,
+                                      callback: (val) {
+                                        setState(() {
+                                          latNews = val;
+                                        });
+                                      },
+                                      style: TextStyle(
+                                          color: Colors.grey.shade600,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 16),
+                                      trimMode: TrimMode.Line,
+                                      trimCollapsedText: 'Read more',
+                                      trimExpandedText: 'Read less',
+                                      moreStyle: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.grey.shade800,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.only(
+                                        left: 10, right: 10, top: 8),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Icon(
-                                          Icons.thumb_up_sharp,
-                                          color: Color(0xff0EA2E3),
-                                          size: height * 0.025,
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.thumb_up_sharp,
+                                              color: Color(0xff0EA2E3),
+                                              size: height * 0.025,
+                                            ),
+                                            SizedBox(width: width * 0.01),
+                                            Text(
+                                              ' 2,480 Likes',
+                                              style: TextStyle(
+                                                  color: Color(0xff363636),
+                                                  fontSize: height * 0.015),
+                                            )
+                                          ],
                                         ),
-                                        SizedBox(width: width * 0.01),
                                         Text(
-                                          ' 2,480 Likes',
+                                          '158 Comments ',
                                           style: TextStyle(
                                               color: Color(0xff363636),
                                               fontSize: height * 0.015),
                                         )
                                       ],
                                     ),
-                                    Text(
-                                      '158 Comments ',
-                                      style: TextStyle(
-                                          color: Color(0xff363636),
-                                          fontSize: height * 0.015),
-                                    )
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
+                            )),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: height * 0.01),
@@ -436,10 +423,24 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        left: width * 0.025, top: height * 0.01),
-                    child: Text(
-                      'Upcoming Matches',
-                      style: TextStyle(color: controller.headingColor),
+                        left: width * 0.025,
+                        bottom: height * 0.01,
+                        top: height * 0.01,
+                        right: width * 0.025),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Upgoing Matches',
+                          style: TextStyle(
+                              color: controller.headingColor, fontSize: 14),
+                        ),
+                        Text(
+                          "View All",
+                          style: TextStyle(
+                              color: controller.headingColor, fontSize: 12),
+                        )
+                      ],
                     ),
                   ),
                   ListView.builder(
@@ -447,27 +448,86 @@ class _HomePageState extends State<HomePage> {
                       itemCount: 4,
                       physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
-                        return Padding(
-                          padding: EdgeInsets.only(
-                              top: height * 0.01,
-                              left: width * 0.025,
-                              right: width * 0.025),
-                          child: Container(
-                            height: height * 0.175,
-                            width: width,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage('assets/screenshot.jpeg')),
-                              boxShadow: <BoxShadow>[
-                                BoxShadow(
-                                  color: Colors.grey.shade200,
-                                  blurRadius: 0.5,
+                        return Container(
+                          height: height * 0.175,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+
+                            boxShadow: <BoxShadow>[
+                              BoxShadow(
+                                color: Colors.grey.shade200,
+                                blurRadius: 0.5,
+                              ),
+                            ],
+                            //borderRadius: BorderRadius.all(Radius.circular(15))
+                          ),
+                          child: Stack(
+                            children: [
+                              Positioned(
+                                  left: 0.1,
+                                  child: Image.asset(
+                                    "assets/red.png",
+                                    width: width * 0.3,
+                                    height: height * 0.1,
+                                    fit: BoxFit.fill,
+                                  )),
+                              Positioned(
+                                  left: width * 0.1,
+                                  top: height * 0.016,
+                                  child: Column(
+                                    children: [
+                                      Image.asset("assets/iconcastle.png"),
+                                      Text(
+                                        "HAMBURG",
+                                        style: TextStyle(
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.w600),
+                                      )
+                                    ],
+                                  )),
+                              Positioned(
+                                  right: 0.1,
+                                  child: Image.asset(
+                                    "assets/blue.png",
+                                    width: width * 0.3,
+                                    height: height * 0.097,
+                                    fit: BoxFit.fill,
+                                  )),
+                              Positioned(
+                                  right: width * 0.1,
+                                  top: height * 0.016,
+                                  child: Column(
+                                    children: [
+                                      Image.asset("assets/team2.png"),
+                                      Text(
+                                        "MAGDEBURG",
+                                        style: TextStyle(
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.w600),
+                                      )
+                                    ],
+                                  )),
+                              Container(
+                                alignment: Alignment.center,
+                                padding: EdgeInsets.symmetric(vertical: 20),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      "7H : 48M Left",
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    SizedBox(height: height * 0.027),
+                                    InkWell(
+                                        onTap: () {},
+                                        child:
+                                            Image.asset("assets/checkOut.png"))
+                                  ],
                                 ),
-                              ],
-                              //borderRadius: BorderRadius.all(Radius.circular(15))
-                            ),
+                              ),
+                            ],
                           ),
                         );
                       }),
