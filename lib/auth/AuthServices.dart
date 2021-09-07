@@ -92,6 +92,7 @@ class AuthServices {
   Future updateEmail({email}) async {
     if (email != null && email != '') {
       await _auth.currentUser!.updateEmail(email);
+      // _auth.currentUser.updatePhotoURL(photoURL)
     }
   }
 

@@ -1,8 +1,13 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hsvh/controllers/Football/ProfilePageController.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -13,6 +18,59 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final ProfilePageController controller = Get.put(ProfilePageController());
+  String barcode = "";
+  final _formKey = GlobalKey<FormState>();
+
+  bool isLoading = false;
+  late File storedImage;
+
+  Future takePicture(BuildContext context) async {
+    final imageFile = await ImagePicker().pickImage(source: ImageSource.camera);
+    if (imageFile == null) {
+      Navigator.of(context).pop();
+      // setState(() {
+      //   storedImage = null;
+      // });
+    } else {
+      setState(() {
+        storedImage = File(imageFile.path);
+        Navigator.of(context).pop();
+      });
+    }
+    if (imageFile!.path == null) {
+    } else {
+      //saving image
+      final appDir = await getApplicationDocumentsDirectory();
+      final fileName = basename(imageFile.path);
+      final savedImage = await storedImage.copy("${appDir.path}/$fileName");
+      print(savedImage);
+    }
+  }
+
+  Future takeGallery(BuildContext context) async {
+    final imageFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (imageFile == null) {
+      Navigator.of(context).pop();
+      // setState(() {
+      //   storedImage = null;
+      // });
+    } else {
+      setState(() {
+        storedImage = File(imageFile.path);
+        Navigator.of(context).pop();
+      });
+    }
+    if (imageFile!.path == null) {
+    } else {
+      //saving image
+      final appDir = await getApplicationDocumentsDirectory();
+      final fileName = basename(imageFile.path);
+      final savedImage = await storedImage.copy("${appDir.path}/$fileName");
+      print(savedImage);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -29,6 +87,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   color: Colors.grey.shade800,
                 ),
                 onPressed: () async {
+                  final prefs = await SharedPreferences.getInstance();
+                  prefs.clear();
                   await FirebaseAuth.instance.signOut();
                 }),
           ],
@@ -71,21 +131,24 @@ class _ProfilePageState extends State<ProfilePage> {
                       Row(
                         children: [
                           Spacer(),
-                          Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.indigo,
-                                //border: Border.all(color: Colors.indigo,width: 2),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(height * 0.0075),
-                                child: Text(
-                                  '+',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: height * 0.045),
+                          InkWell(
+                            onTap: () {},
+                            child: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.indigo,
+                                  //border: Border.all(color: Colors.indigo,width: 2),
                                 ),
-                              ))
+                                child: Padding(
+                                  padding: EdgeInsets.all(height * 0.0075),
+                                  child: Text(
+                                    '+',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: height * 0.045),
+                                  ),
+                                )),
+                          )
                         ],
                       )
                     ],
@@ -95,7 +158,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   height: height * 0.015,
                 ),
                 Text(
-                  'Alex Bristo',
+                  '${FirebaseAuth.instance.currentUser!.displayName}',
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: height * 0.03,
@@ -335,4 +398,6 @@ class _ProfilePageState extends State<ProfilePage> {
       );
     });
   }
+
+  getApplicationDocumentsDirectory() {}
 }

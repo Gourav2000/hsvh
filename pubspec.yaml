@@ -48,6 +48,10 @@ dependencies:
   google_maps_flutter:
   dotted_line:
   provider:
+  image_picker:
+  path_provider:
+  path:
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:
