@@ -6,7 +6,6 @@ import 'package:hsvh/BasicWidgets.dart';
 import 'package:hsvh/Screen/ZeroPage.dart';
 import 'package:hsvh/auth/AuthServices.dart';
 import 'package:hsvh/auth/LoginPage.dart';
-import 'package:hsvh/controllers/Home/HomePageController.dart';
 import 'package:http/http.dart';
 
 import 'OtpScreen.dart';
@@ -49,9 +48,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return GetBuilder<HomePageController>(
-      builder: (controller) {
-        return Scaffold(
+    return Scaffold(
           //resizeToAvoidBottomInset: false,
           body: Container(
             color: Colors.white,
@@ -354,14 +351,13 @@ class _RegisterPageState extends State<RegisterPage> {
                                 });
                                 if (response.statusCode == 201) {
                                   print(FirebaseAuth.instance.currentUser!.uid);
-                                  await controller.userIdSave(
-                                      FirebaseAuth.instance.currentUser!.uid);
-                                  await Navigator.push(
+                                  //http
+                                  await Navigator.pushAndRemoveUntil(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => ZeroPage(
                                                 selectedIndex: 0,
-                                              )));
+                                              )),(Route<dynamic> route) => false);
                                 } else {}
                               } else
                                 showError('Verify your Email before proceeding',
@@ -470,7 +466,5 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ),
         );
-      },
-    );
   }
 }
