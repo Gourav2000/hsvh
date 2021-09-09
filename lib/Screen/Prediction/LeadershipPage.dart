@@ -27,7 +27,9 @@ class _LeadershipPageState extends State<LeadershipPage> {
                   icon: Icon(Icons.arrow_back_ios),
                   iconSize: 25,
                   color: Colors.black,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
                 ),
                 centerTitle: true,
                 title: Text(
@@ -246,14 +248,20 @@ class _LeadershipPageState extends State<LeadershipPage> {
                             margin: EdgeInsets.only(left: 100),
                             child: Column(
                               children: [
-                                Text(
-                                    "1",
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold
-                                    )
+                                Image.asset(
+                                  'assets/crown.png',
+                                  fit: BoxFit.fill,
+                                  height: 30,
+
                                 ),
+                                // Text(
+                                //     "1",
+                                //     style: TextStyle(
+                                //         color: Colors.black,
+                                //         fontSize: 20,
+                                //         fontWeight: FontWeight.bold
+                                //     )
+                                // ),
                                 SizedBox(
                                   height: 10,
                                 ),

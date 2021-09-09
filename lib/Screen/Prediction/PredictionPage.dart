@@ -38,7 +38,9 @@ class _PredictionPageState extends State<PredictionPage> {
                                icon: Icon(Icons.arrow_back_ios),
                                iconSize: 25,
                                color: Colors.black,
-                               onPressed: () {},
+                               onPressed: () {
+                                 Navigator.of(context).pop();
+                               },
                              ),
                              Container(
                                decoration: BoxDecoration(
@@ -181,7 +183,7 @@ class _PredictionPageState extends State<PredictionPage> {
                                    children: [
                                      InkWell(
                                        child: Container(
-                                         width: 95,
+                                         width: 140,
                                          height: 50,
                                          decoration: BoxDecoration(
                                            color: Color(0xFFFB9595),
@@ -190,13 +192,13 @@ class _PredictionPageState extends State<PredictionPage> {
                                          child: Padding(
                                            padding: const EdgeInsets.only(left:8.0, right: 8.0),
                                            child: Row(
-                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                              children: [
                                                Text(
                                                  "Predict",
                                                  style: TextStyle(
                                                    color: Colors.white,
-                                                   fontSize: 16.0,
+                                                   fontSize: 20.0,
                                                    fontWeight: FontWeight.bold
                                                  ),
                                                ),

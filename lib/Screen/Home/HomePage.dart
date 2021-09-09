@@ -1,12 +1,16 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:hsvh/Screen/oneIsToTwo/NewsPage.dart';
 import 'package:hsvh/Singledrawer.dart';
 import 'package:hsvh/Vipdrawer.dart';
 import 'package:hsvh/controllers/Home/HomePageController.dart';
 import 'package:readmore/readmore.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -24,15 +28,13 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     controller1.updateLoading(true);
-    controller1
-        .getAllNews()
-        .then((value) => controller1.fetchUserId())
-        .then((value) => controller1.updateLoading(false));
+    controller1.getAllNews().then((value) => controller1.updateLoading(false));
   }
 
   @override
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   Widget build(BuildContext context) {
+    // print(FirebaseAuth.instance.currentUser!.displayName);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return GetBuilder<HomePageController>(
@@ -311,11 +313,16 @@ class _HomePageState extends State<HomePage> {
                                     color: controller.headingColor,
                                     fontSize: 14),
                               ),
-                              Text(
-                                "View All",
-                                style: TextStyle(
-                                    color: controller.headingColor,
-                                    fontSize: 12),
+                              InkWell(
+                                onTap: () => Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                        builder: (context) => NewsPage())),
+                                child: Text(
+                                  "View All",
+                                  style: TextStyle(
+                                      color: controller.headingColor,
+                                      fontSize: 12),
+                                ),
                               )
                             ],
                           ),
@@ -327,7 +334,9 @@ class _HomePageState extends State<HomePage> {
                           width: width,
                           padding: EdgeInsets.only(top: height * 0.01),
                           child: CarouselSlider.builder(
-                              itemCount: controller.news.length,
+                              itemCount: controller.news.length >= 5
+                                  ? 5
+                                  : controller.news.length,
                               options: CarouselOptions(
                                   height: height * 0.38,
                                   viewportFraction: 1,
@@ -339,12 +348,23 @@ class _HomePageState extends State<HomePage> {
                                       int pageViewIndex) =>
                                   Container(
                                     child: Column(
+                                      // imageUrl: controller
+                                      //         .news[itemIndex].image ??
+                                      //     "",
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Image.network(
-                                          controller.news[itemIndex].image ??
+                                        CachedNetworkImage(
+                                          imageUrl: controller
+                                                  .news[itemIndex].image ??
                                               "",
+                                          placeholder: (context, fgf) {
+                                            return Shimmer.fromColors(
+                                                highlightColor:
+                                                    Colors.grey[400]!,
+                                                baseColor: Colors.white,
+                                                child: ShimmerLoadingnew());
+                                          },
                                           height: height * 0.23,
                                           width: width,
                                           fit: BoxFit.fill,
@@ -401,14 +421,15 @@ class _HomePageState extends State<HomePage> {
                                                 children: [
                                                   Icon(
                                                     Icons.thumb_up_sharp,
-                                                    color: Color(0xff0EA2E3),
-                                                    size: height * 0.025,
+                                                    color: Colors.blue,
+                                                    size: height * 0.02,
                                                   ),
-                                                  SizedBox(width: width * 0.01),
+                                                  SizedBox(width: 2),
                                                   Text(
                                                     controller.news[itemIndex]
-                                                        .likes!.length
-                                                        .toString(),
+                                                            .likes!.length
+                                                            .toString() +
+                                                        " Likes",
                                                     style: TextStyle(
                                                         color:
                                                             Color(0xff363636),
@@ -434,8 +455,10 @@ class _HomePageState extends State<HomePage> {
                           padding: EdgeInsets.only(top: height * 0.01),
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: List.generate(controller.news.length,
-                                  (index) {
+                              children: List.generate(
+                                  controller.news.length >= 5
+                                      ? 5
+                                      : controller.news.length, (index) {
                                 return index == controller.slideIndex2.value
                                     ? Container(
                                         width: width * 0.05,
@@ -582,6 +605,20 @@ class _HomePageState extends State<HomePage> {
                 ),
         );
       },
+    );
+  }
+}
+
+class ShimmerLoadingnew extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.grey,
+      child: ListTile(
+        leading: CircleAvatar(
+          backgroundColor: Colors.grey,
+        ),
+      ),
     );
   }
 }

@@ -36,7 +36,9 @@ class _PersonalConversationPageState extends State<PersonalConversationPage> {
                             icon: Icon(Icons.arrow_back_ios),
                             iconSize: 30,
                             color: Colors.grey.shade700,
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
                           ),
                           SizedBox(
                             width: 15.0,

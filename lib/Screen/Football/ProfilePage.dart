@@ -87,8 +87,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   color: Colors.grey.shade800,
                 ),
                 onPressed: () async {
-                  final prefs = await SharedPreferences.getInstance();
-                  prefs.clear();
+                  // final prefs = await SharedPreferences.getInstance();
+                  // prefs.clear();
                   await FirebaseAuth.instance.signOut();
                 }),
           ],

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hsvh/BasicWidgets.dart';
@@ -27,6 +28,7 @@ class _TeamsPageState extends State<TeamsPage> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+
     return GetBuilder<TeamsPageController>(builder: (controller) {
       return Scaffold(
           appBar: AppBar(

@@ -52,6 +52,8 @@ dependencies:
   path_provider:
   path:
   shared_preferences:
+  cached_network_image:
+  shimmer: ^2.0.0
 
 dev_dependencies:
   flutter_test:

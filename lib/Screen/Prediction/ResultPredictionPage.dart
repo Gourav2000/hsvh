@@ -35,7 +35,9 @@ class _ResultPredictionPageState extends State<ResultPredictionPage> {
                                 icon: Icon(Icons.arrow_back_ios),
                                 iconSize: 25,
                                 color: Colors.black,
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
                               ),
                               Row(
                                 //mainAxisAlignment: MainAxisAlignment.end,
@@ -88,6 +90,15 @@ class _ResultPredictionPageState extends State<ResultPredictionPage> {
                             children: [
                               Column(
                                 children: [
+                                  Image.asset(
+                                    'assets/icons/Group 9967.png',
+                                    // height: 50,
+                                    // width: 50,
+                                    fit: BoxFit.fill,
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
                                   Image.asset(
                                     'assets/icons/1200px-Real_Madrid_CF.svg.png',
                                     height: 50,

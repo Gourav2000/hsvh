@@ -77,7 +77,9 @@ class _EventsPageState extends State<EventsPage> {
                       icon: Icon(Icons.arrow_back_ios),
                       iconSize: 30,
                       color: Colors.black,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
                     ),
                     Text(
                       "Events",
@@ -409,19 +411,24 @@ class _EventsPageState extends State<EventsPage> {
                 padding: const EdgeInsets.only(bottom: 15.0),
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Container(
-                    padding: EdgeInsets.all(12.0),
-                    width: width * 0.3,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xFF002B7A)),
-                        borderRadius: BorderRadius.circular(15.0)),
-                    child: Center(
-                      child: Text(
-                        "Cancel",
-                        style: TextStyle(
-                            fontSize: 17.0,
-                            color: Color(0xFF002B7A),
-                            fontWeight: FontWeight.bold),
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(12.0),
+                      width: width * 0.3,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Color(0xFF002B7A)),
+                          borderRadius: BorderRadius.circular(15.0)),
+                      child: Center(
+                        child: Text(
+                          "Cancel",
+                          style: TextStyle(
+                              fontSize: 17.0,
+                              color: Color(0xFF002B7A),
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ),

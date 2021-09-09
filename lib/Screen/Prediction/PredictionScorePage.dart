@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hsvh/Screen/Prediction/PredictionPage.dart';
 import 'package:hsvh/controllers/Prediction/PredictionPageController.dart';
 
 class PredictionScorePage extends StatefulWidget {
@@ -37,7 +38,9 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                         icon: Icon(Icons.arrow_back_ios),
                         iconSize: 25,
                         color: Colors.black,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
                       ),
                       Row(
                         //mainAxisAlignment: MainAxisAlignment.end,
@@ -98,7 +101,7 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(right: 15.0),
+                        padding: const EdgeInsets.only(right: 0.0),
                         child: Column(
                           children: [
                             Padding(
@@ -279,7 +282,7 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                           scoreDialog(width, height);
                         },
                         child: Image.asset(
-                          'assets/icons/Icon edit.png',
+                          'assets/icons/Icon Edits.png',
                           fit: BoxFit.fill,
                           height: 35,
                           width: 35,
@@ -289,11 +292,33 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                     Positioned(
                       left: 0,
                       top: 0,
-                      child: Image.asset(
-                        'assets/icons/Group 308.png',
-                        fit: BoxFit.fill,
-                        height: 40,
-                        width: 50,
+                      child: Row(
+                        children: [
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/icons/Vector.png',
+                                fit: BoxFit.fill,
+                                // height: 40,
+                                // width: 50,
+                              ),
+                              Text(
+                                "10",
+                                style: TextStyle(
+                                  color: Color(0xFFFFE59A),
+                                  fontWeight: FontWeight.bold
+                                ),
+                              )
+                            ],
+                          ),
+                          Image.asset(
+                            'assets/icons/pts.png',
+                            fit: BoxFit.fill,
+                            // height: 40,
+                            // width: 50,
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -364,7 +389,7 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                           penaltyDialog(width, height);
                         },
                         child: Image.asset(
-                          'assets/icons/Icon edit.png',
+                          'assets/icons/Icon Edits.png',
                           fit: BoxFit.fill,
                           height: 35,
                           width: 35,
@@ -374,11 +399,33 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                     Positioned(
                       left: 0,
                       top: 0,
-                      child: Image.asset(
-                        'assets/icons/Group 308.png',
-                        fit: BoxFit.fill,
-                        // height: 40,
-                        // width: 50,
+                      child: Row(
+                        children: [
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/icons/Vector.png',
+                                fit: BoxFit.fill,
+                                // height: 40,
+                                // width: 50,
+                              ),
+                              Text(
+                                "10",
+                                style: TextStyle(
+                                    color: Color(0xFFFFE59A),
+                                    fontWeight: FontWeight.bold
+                                ),
+                              )
+                            ],
+                          ),
+                          Image.asset(
+                            'assets/icons/pts.png',
+                            fit: BoxFit.fill,
+                            // height: 40,
+                            // width: 50,
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -475,7 +522,7 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                           //teamSelectDialog(width, height);
                         },
                         child: Image.asset(
-                          'assets/icons/Icon edit.png',
+                          'assets/icons/Icon Edits.png',
                           fit: BoxFit.fill,
                           height: 35,
                           width: 35,
@@ -485,11 +532,33 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                     Positioned(
                       left: 0,
                       top: 0,
-                      child: Image.asset(
-                        'assets/icons/Group 307.png',
-                        fit: BoxFit.fill,
-                        height: 40,
-                        width: 50,
+                      child: Row(
+                        children: [
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/icons/Vector.png',
+                                fit: BoxFit.fill,
+                                // height: 40,
+                                // width: 50,
+                              ),
+                              Text(
+                                "15",
+                                style: TextStyle(
+                                    color: Color(0xFFFFE59A),
+                                    fontWeight: FontWeight.bold
+                                ),
+                              )
+                            ],
+                          ),
+                          Image.asset(
+                            'assets/icons/pts.png',
+                            fit: BoxFit.fill,
+                            // height: 40,
+                            // width: 50,
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -583,7 +652,7 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                           teamSelectDialog(width, height);
                         },
                         child: Image.asset(
-                          'assets/icons/Icon edit.png',
+                          'assets/icons/Icon Edits.png',
                           fit: BoxFit.fill,
                           height: 35,
                           width: 35,
@@ -593,11 +662,33 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                     Positioned(
                       left: 0,
                       top: 0,
-                      child: Image.asset(
-                        'assets/icons/Group 307.png',
-                        fit: BoxFit.fill,
-                        height: 40,
-                        width: 50,
+                      child: Row(
+                        children: [
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/icons/Vector.png',
+                                fit: BoxFit.fill,
+                                // height: 40,
+                                // width: 50,
+                              ),
+                              Text(
+                                "15",
+                                style: TextStyle(
+                                    color: Color(0xFFFFE59A),
+                                    fontWeight: FontWeight.bold
+                                ),
+                              )
+                            ],
+                          ),
+                          Image.asset(
+                            'assets/icons/pts.png',
+                            fit: BoxFit.fill,
+                            // height: 40,
+                            // width: 50,
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -693,7 +784,7 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                       right: 0,
                       top: 0,
                       child: Image.asset(
-                        'assets/icons/Icon edit.png',
+                        'assets/icons/Icon Edits.png',
                         fit: BoxFit.fill,
                         height: 35,
                         width: 35,
@@ -702,11 +793,33 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                     Positioned(
                       left: 0,
                       top: 0,
-                      child: Image.asset(
-                        'assets/icons/Group 9939.png',
-                        fit: BoxFit.fill,
-                        height: 40,
-                        width: 50,
+                      child: Row(
+                        children: [
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/icons/Vector.png',
+                                fit: BoxFit.fill,
+                                // height: 40,
+                                // width: 50,
+                              ),
+                              Text(
+                                "20",
+                                style: TextStyle(
+                                    color: Color(0xFFFFE59A),
+                                    fontWeight: FontWeight.bold
+                                ),
+                              )
+                            ],
+                          ),
+                          Image.asset(
+                            'assets/icons/pts.png',
+                            fit: BoxFit.fill,
+                            // height: 40,
+                            // width: 50,
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -840,7 +953,7 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                       right: 0,
                       top: 0,
                       child: Image.asset(
-                        'assets/icons/Icon edit.png',
+                        'assets/icons/Icon Edits.png',
                         fit: BoxFit.fill,
                         height: 35,
                         width: 35,
@@ -849,11 +962,33 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                     Positioned(
                       left: 0,
                       top: 0,
-                      child: Image.asset(
-                        'assets/icons/Group 308.png',
-                        fit: BoxFit.fill,
-                        height: 40,
-                        width: 50,
+                      child: Row(
+                        children: [
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/icons/Vector.png',
+                                fit: BoxFit.fill,
+                                // height: 40,
+                                // width: 50,
+                              ),
+                              Text(
+                                "10",
+                                style: TextStyle(
+                                    color: Color(0xFFFFE59A),
+                                    fontWeight: FontWeight.bold
+                                ),
+                              )
+                            ],
+                          ),
+                          Image.asset(
+                            'assets/icons/pts.png',
+                            fit: BoxFit.fill,
+                            // height: 40,
+                            // width: 50,
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -972,7 +1107,7 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                           selectTeamPlayerDialog(width, height);
                         },
                         child: Image.asset(
-                          'assets/icons/Icon edit.png',
+                          'assets/icons/Icon Edits.png',
                           fit: BoxFit.fill,
                           height: 35,
                           width: 35,
@@ -982,11 +1117,33 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                     Positioned(
                       left: 0,
                       top: 0,
-                      child: Image.asset(
-                        'assets/icons/Group 307.png',
-                        fit: BoxFit.fill,
-                        height: 40,
-                        width: 50,
+                      child: Row(
+                        children: [
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/icons/Vector.png',
+                                fit: BoxFit.fill,
+                                // height: 40,
+                                // width: 50,
+                              ),
+                              Text(
+                                "15",
+                                style: TextStyle(
+                                    color: Color(0xFFFFE59A),
+                                    fontWeight: FontWeight.bold
+                                ),
+                              )
+                            ],
+                          ),
+                          Image.asset(
+                            'assets/icons/pts.png',
+                            fit: BoxFit.fill,
+                            // height: 40,
+                            // width: 50,
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -1079,7 +1236,7 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                       right: 0,
                       top: 0,
                       child: Image.asset(
-                        'assets/icons/Icon edit.png',
+                        'assets/icons/Icon Edits.png',
                         fit: BoxFit.fill,
                         height: 35,
                         width: 35,
@@ -1088,11 +1245,33 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                     Positioned(
                       left: 0,
                       top: 0,
-                      child: Image.asset(
-                        'assets/icons/Group 307.png',
-                        fit: BoxFit.fill,
-                        height: 40,
-                        width: 50,
+                      child: Row(
+                        children: [
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/icons/Vector.png',
+                                fit: BoxFit.fill,
+                                // height: 40,
+                                // width: 50,
+                              ),
+                              Text(
+                                "15",
+                                style: TextStyle(
+                                    color: Color(0xFFFFE59A),
+                                    fontWeight: FontWeight.bold
+                                ),
+                              )
+                            ],
+                          ),
+                          Image.asset(
+                            'assets/icons/pts.png',
+                            fit: BoxFit.fill,
+                            // height: 40,
+                            // width: 50,
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -1210,7 +1389,7 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                       right: 0,
                       top: 0,
                       child: Image.asset(
-                        'assets/icons/Icon edit.png',
+                        'assets/icons/Icon Edits.png',
                         fit: BoxFit.fill,
                         height: 35,
                         width: 35,
@@ -1219,11 +1398,33 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                     Positioned(
                       left: 0,
                       top: 0,
-                      child: Image.asset(
-                        'assets/icons/Group 9939.png',
-                        fit: BoxFit.fill,
-                        height: 40,
-                        width: 50,
+                      child: Row(
+                        children: [
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/icons/Vector.png',
+                                fit: BoxFit.fill,
+                                // height: 40,
+                                // width: 50,
+                              ),
+                              Text(
+                                "20",
+                                style: TextStyle(
+                                    color: Color(0xFFFFE59A),
+                                    fontWeight: FontWeight.bold
+                                ),
+                              )
+                            ],
+                          ),
+                          Image.asset(
+                            'assets/icons/pts.png',
+                            fit: BoxFit.fill,
+                            // height: 40,
+                            // width: 50,
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -1458,7 +1659,7 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                                 ),
                               ),
                             ),
-                            IconButton(onPressed: () {}, icon: Icon(Icons.add_circle, color: Colors.grey,)),
+                            IconButton(onPressed: () {}, icon: Icon(Icons.add_circle, color: Colors.grey, size: 28,)),
                           ],
                         ),
                       ],
@@ -1722,37 +1923,53 @@ class _PredictionScorePageState extends State<PredictionScorePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Container(
-                          padding: EdgeInsets.all(12.0),
-                          width: width * 0.35,
-                          decoration: BoxDecoration(
-                              //color: Color(0xFF002B7A),
-                              border: Border.all(color: Colors.black),
-                              borderRadius: BorderRadius.circular(20.0)),
-                          child: Center(
-                            child: Text(
-                              "Edit",
-                              style: TextStyle(
-                                  fontSize: 17.0,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
+                        InkWell(
+                          onTap: (){
+                            Navigator.of(context).pop();
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(12.0),
+                            width: width * 0.35,
+                            decoration: BoxDecoration(
+                                //color: Color(0xFF002B7A),
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.circular(20.0)),
+                            child: Center(
+                              child: Text(
+                                "Edit",
+                                style: TextStyle(
+                                    fontSize: 17.0,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
                         ),
-                        Container(
-                          padding: EdgeInsets.all(12.0),
-                          width: width * 0.35,
-                          decoration: BoxDecoration(
-                              color: Color(0xFF002B7A),
-                              border: Border.all(color: Colors.black),
-                              borderRadius: BorderRadius.circular(20.0)),
-                          child: Center(
-                            child: Text(
-                              "Continue",
-                              style: TextStyle(
-                                  fontSize: 17.0,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
+                        InkWell(
+                          onTap: (){
+                            // Navigator.pushAndRemoveUntil(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //     builder: (BuildContext context) => PredictionPage(),
+                            //   ),
+                            //       (route) => false,
+                            // );
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(12.0),
+                            width: width * 0.35,
+                            decoration: BoxDecoration(
+                                color: Color(0xFF002B7A),
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.circular(20.0)),
+                            child: Center(
+                              child: Text(
+                                "Continue",
+                                style: TextStyle(
+                                    fontSize: 17.0,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
                         ),

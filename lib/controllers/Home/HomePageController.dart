@@ -7,7 +7,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class Likes {
   String? userid;
-  Likes({this.userid});
+  String? userName;
+  String? likeId;
+  Likes({this.userid, this.likeId, this.userName});
 }
 
 class Comments {
@@ -61,7 +63,8 @@ class HomePageController extends GetxController {
 
   Future getAllNews() async {
     final url =
-        Uri.parse("https://hsvh-backend.herokuapp.com/api/news/getAllNews");
+        Uri.parse("https://hsvhbackend.herokuapp.com/api/news/getAllNews");
+
     final response = await http.get(url);
     List<News> tempnews = [];
     // List<Comments> temcom = [];
@@ -70,28 +73,6 @@ class HomePageController extends GetxController {
     // List<dynamic> resCom = json.decode(response.body)["news"][0]["comment"];
     // List<dynamic> resLikes = json.decode(response.body)["news"][0]["likes"];
     if (response.statusCode == 201) {
-      // print(json.decode(response.body)["news"]);
-      // print(json.decode(response.body)["news"][0]["comment"]);
-      // print(json.decode(response.body)["news"][0]["likes"]);
-//comments
-      // resCom.forEach((element) {
-      //   print(element);
-      //   temcom.add(Comments(
-      //     commentId: element["_id"],
-      //     comment: element["content"],
-      //     userId: element["authorID"],
-      //     userName: element["authorName"],
-      //   ));
-      // });
-
-      // //likes
-      // resLikes.forEach((element) {
-      //   print(element);
-      //   temlikes.add(Likes(
-      //     userid: element,
-      //   ));
-      // });
-
       //news
       responseNews.forEach((element) {
         tempnews.add(News(
@@ -110,7 +91,9 @@ class HomePageController extends GetxController {
           likes: (element["likes"] as List<dynamic>)
               .map(
                 (item) => Likes(
-                  userid: item,
+                  likeId: item["_id"],
+                  userName: item["userName"],
+                  userid: item["userID"],
                 ),
               )
               .toList(),
@@ -122,29 +105,5 @@ class HomePageController extends GetxController {
       // print(news[1].likes!.length);
       update();
     }
-  }
-
-  Future fetchUserId() async {
-    print(" wrong");
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (!prefs.containsKey("userId")) {
-      print("pref wrong");
-      return;
-    } else {
-      print("pref right");
-      final token = prefs.getString("userId");
-      userId = token;
-      // print(userId);
-      update();
-    }
-  }
-
-  userIdSave(String userId) async {
-    final prefs = await SharedPreferences.getInstance();
-
-    await prefs.setString(
-      "userId",
-      userId,
-    );
   }
 }
